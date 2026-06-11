@@ -1,0 +1,96 @@
+# ============================================================
+# Nexback API — Python Dependencies
+# Python: 3.11
+# ============================================================
+#
+# ── INSTALL INSTRUCTIONS ────────────────────────────────────
+#
+# Step 1: Create and activate venv
+#   python -m venv .venv
+#   Windows : .venv\Scripts\activate
+#   Linux   : source .venv/bin/activate
+#
+# Step 2: Upgrade pip first
+#   pip install --upgrade pip
+#
+#
+# Step 3: Install demucs from git (PyPI release is outdated):
+#   pip install "demucs @ git+https://github.com/facebookresearch/demucs#egg=demucs"
+#   OR pip install --no-deps git+https://github.com/facebookresearch/demucs#egg=demucs
+#
+# Step 4: Install all remaining deps:
+#   pip install -r requirements.txt
+#
+# ── NOTES ────────────────────────────────────────────────────
+# - torch / torchaudio are NOT listed here — install them in Step 3.
+# - omnivoice requires transformers>=5.3.0 and torch>=2.6 for
+#   torch.float8_e8m0fnu (used by transformers 5.x internally).
+#   torch 2.7.0 satisfies this on all platforms.
+# - demucs is not listed here — install it in Step 4.
+# ============================================================
+
+# --- Transformers ecosystem ---
+transformers>=5.3.0,<5.11.0
+accelerate>=0.34.0
+huggingface_hub>=0.26.0
+safetensors>=0.4.3
+tokenizers>=0.21.0
+diffusers>=0.30.0
+
+# --- OmniVoice TTS engine ---
+omnivoice
+s3tokenizer
+
+# --- Audio enhancement & separation ---
+# (demucs installed separately from git — see Step 4 above)
+
+# 1. Install the Rust compiler toolchain for Google Colab setup
+# !curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+# 2. Add Cargo (Rust's package manager) to the Colab environment PATH
+    # import os
+    # os.environ['PATH'] += ":/root/.cargo/bin"
+DeepFilterNet
+
+# --- Transcription ---
+faster-whisper
+
+# --- Audio I/O & processing ---
+soundfile
+librosa
+pydub
+pyrubberband
+
+# --- Video processing ---
+moviepy
+
+# --- Translation (local LLM) ---
+# curl -fsSL https://ollama.com/install.sh | sh
+ollama
+
+# --- Utilities ---
+numpy
+scipy
+conformer
+webdataset
+tensorboardx
+aksharamukha
+
+# --- Run Torch at Last always ---
+# Step 5: Install PyTorch FIRST (pick ONE line below):
+#
+#   NVIDIA GPU (CUDA 12.1) — Windows / Linux:
+#   pip install torch==2.7.0+cu121 torchaudio==2.7.0+cu121 --index-url https://download.pytorch.org/whl/cu121
+#
+#   NVIDIA GPU (CUDA 12.4) — Windows / Linux:
+#   pip install torch==2.7.0+cu124 torchaudio==2.7.0+cu124 --index-url https://download.pytorch.org/whl/cu124
+#
+#   CPU only / Google Colab (no GPU) / Apple Silicon:
+#   pip install torch==2.7.0 torchaudio==2.7.0
+#
+#   Google Colab (already has torch, just upgrade torchaudio):
+#   pip install --upgrade torch torchaudio
+demucs
+
+torch==2.7.0 
+torchaudio==2.7.0
+torchvision==2.7.0

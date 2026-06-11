@@ -1,0 +1,21 @@
+# for Translation
+ollama
+
+# for Chatterbox-Turbo TTS
+numpy
+librosa
+s3tokenizer
+torch
+torchaudio
+transformers
+diffusers
+resemble-perth
+conformer
+safetensors
+pykakasi
+gradio
+pyloudnorm
+omegaconf
+
+# video-preprocessing
+moviepy
