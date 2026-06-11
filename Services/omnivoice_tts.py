@@ -149,7 +149,7 @@ class WhisperWordDetector:
             logger.warning(f"Failed {self.config.whisper_model}: {e}. Using tiny.en")
             self._pipe = hf_pipeline(
                 "automatic-speech-recognition",
-                model="openai/whisper-tiny.en",
+                model="openai/whisper-small.en",
                 device=device,
                 torch_dtype=torch.float32,
                 return_timestamps="word",
